@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pregnancy Prediction App</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Poppins', sans-serif;
+            background:  url('https://i.pinimg.com/736x/6b/a6/6b/6ba66b14dc19c84cfde9e2bb190ef838.jpg') center center / cover no-repeat;
+
+            overflow: hidden;
+            animation: backgroundMove 10s infinite linear;
+        }
+        @keyframes backgroundMove {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 100% 100%; }
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: url('https://e1.pxfuel.com/desktop-wallpaper/585/665/desktop-wallpaper-peach-aesthetic.jpg') center center / cover no-repeat;
+            overflow: hidden;
+            animation: backgroundMove 10s infinite linear;
+
+            text-align: center;
+            padding: 30px;
+            max-width: 500px;
+            background-color: white;
+            border-radius: 25px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            max-height: 85vh;
+            overflow-y: auto;
+            position: relative;
+            display: none; /* Ensures only one section visible at a time */
+            margin: 0 auto; /* Centers the container */
+        }
+        h1, h2 {
+            color: #ff66b2;
+            font-family: 'Pacifico', cursive;
+        }
+        button {
+            background-color: #ff66b2;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 10px;
+        }
+        button:hover {
+            background-color: #ff3385;
+        }
+        .go-back {
+            background-color: #ff99cc;
+        }
+        input, select {
+            margin: 10px auto;
+            padding: 10px;
+            width: 80%;
+            max-width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            display: block;
+        }
+        .floating-image {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            animation: floating 3s ease-in-out infinite;
+        }
+        .image1 { top: 20px; left: 30px; }
+        .image2 { bottom: 20px; right: 30px; }
+        .image3 { top: 50%; left: 50%; transform: translate(-50%, -50%); }
+        @keyframes floating {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .glitter {
+            background: #fff;
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            box-shadow: 0 0 6px #fff;
+            border-radius: 50%;
+            animation: glitter 1.5s infinite linear;
+        }
+        .glitter1 { top: 30%; left: 40%; }
+        .glitter2 { top: 60%; left: 70%; }
+        .glitter3 { top: 90%; left: 20%; }
+        @keyframes glitter {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
+        }
+        .radio-group {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-image image1"></div>
+    <div class="floating-image image2"></div>
+    <div class="floating-image image3"></div>
+    <div class="glitter glitter1"></div>
+    <div class="glitter glitter2"></div>
+    <div class="glitter glitter3"></div>
+    <div class="container" id="main-menu" style="display: block;">
+        <div class="textbox">
+            <h1>Pregnancy Prediction App</h1>
+            <button onclick="startQuiz()">Take the Prediction Test</button>
+        </div>
+    </div>
+    <div class="container" id="quiz-section">
+        <h2>Level 1: Fun Quiz</h2>
+        <form>
+            <label>Question 1: Do you feel an inexplicable urge to learn ancient Sumerian?</label>
+            <div class="radio-group">
+                <label><input type="radio" name="q1" value="yes"> Yes</label>
+                <label><input type="radio" name="q1" value="no"> No</label>
+            </div>
+            <label>Question 2: Have you started referring to your feet as "lefty" and "righty"?</label>
+            <div class="radio-group">
+                <label><input type="radio" name="q2" value="yes"> Yes</label>
+                <label><input type="radio" name="q2" value="no"> No</label>
+            </div>
+            <label>Question 3:Do you find yourself plotting to become the world's foremost expert in origami cranes?</label>
+            <div class="radio-group">
+                <label><input type="radio" name="q3" value="yes"> Yes</label>
+                <label><input type="radio" name="q3" value="no"> No</label>
+            </div>
+            <label>Question 4:Have you recently become obsessed with the idea of collecting spoons from every country??</label>
+            <div class="radio-group">
+                <label><input type="radio" name="q4" value="yes"> Yes</label>
+                <label><input type="radio" name="q4" value="no"> No</label>
+            </div>
+            <label>Question 5: Are you having vivid dreams about becoming a championship pogo stick jumper?</label>
+            <div class="radio-group">
+                <label><input type="radio" name="q5" value="yes"> Yes</label>
+                <label><input type="radio" name="q5" value="no"> No</label>
+            </div>
+            <label>Question 6: Do you suddenly feel the need to write a manifesto about the superiority of forks over spoons?</label>
+            <div class="radio-group">
+                <label><input type="radio" name="q6" value="yes"> Yes</label>
+                <label><input type="radio" name="q6" value="no"> No</label>
+            </div>
+            <label>Question 7:Have you started considering the pros and cons of raising a pet rock family?</label>
+            <div class="radio-group">
+                <label><input type="radio" name="q7" value="yes"> Yes</label>
+                <label><input type="radio" name="q7" value="no"> No</label>
+            </div>
+            <label>Question 8:Are you mysteriously drawn to the idea of knitting sweaters for statues?</label>
+            <div class="radio-group">
+                <label><input type="radio" name="q8" value="yes"> Yes</label>
+                <label><input type="radio" name="q8" value="no"> No</label>
+            </div>
+            <label>Question 9: Do you find yourself planning a future where you only communicate through interpretive dance?</label>
+            <div class="radio-group">
+                <label><input type="radio" name="q9" value="yes"> Yes</label>
+                <label><input type="radio" name="q9" value="no"> No</label>
+            </div>
+            <label>Question 10: Have you begun pondering the philosophical implications of mismatched socks?</label>
+            <div class="radio-group">
+                <label><input type="radio" name="q10" value="yes"> Yes</label>
+                <label><input type="radio" name="q10" value="no"> No</label>
+            </div>
+        </form>
+        <button onclick="goToPrediction()">Next Level</button>
+        <button class="go-back" onclick="goBack()">Go Back to Menu</button>
+    </div>
+    <div class="container" id="prediction-section">
+        <h2>Level 2: Physical Prediction</h2>
+        <form>
+            <label>Select your hair color:</label><br>
+            <select name="hair-color">
+                <option value="blonde">Blonde</option>
+                <option value="brown">Brown</option>
+                <option value="black">Black</option>
+                <option value="red">Red</option>
+                <option value="gray">Gray</option>
+            </select><br>
+            <label>Select your zodiac sign:</label><br>
+            <select name="zodiac-sign">
+                <option value="aries">Aries</option>
+                <option value="taurus">Taurus</option>
+                <option value="gemini">Gemini</option>
+                <option value="cancer">Cancer</option>
+                <option value="leo">Leo</option>
+                <option value="virgo">Virgo</option>
+                <option value="libra">Libra</option>
+                <option value="scorpio">Scorpio</option>
+                <option value="sagittarius">Sagittarius</option>
+                <option value="capricorn">Capricon</option>
+                <option value="aquarius">Aquarius</option>
+                <option value="pisces">Pisces</option>
+            </select><br>
+            <label>Upload a selfie:</label><br>
+            <input type="file" name="selfie" accept="image/*"><br>
+            <button type="button" onclick="showFortune()">Proceed</button>
+        </form>
+        <button class="go-back" onclick="goBack()">Go Back to Menu</button>
+    </div>
+    <div class="container" id="fortune-section">
+        <h2>Level 3: Fortune Teller</h2>
+        <p>Your fortune for today is:</p>
+        <p id="fortune-message">You have a mysterious energy... Perhaps something exciting is coming!</p>
+        <button onclick="showFinalResult()">Final Result</button>
+        <button class="go-back" onclick="goBack()">Go Back to Menu</button>
+    </div>
+    <div class="container" id="final-result">
+        <h2>Final Result</h2>
+        <p id="final-message">You are... Pregnant!</p>
+        <button class="go-back" onclick="goBack()">Go Back to Menu</button>
+        <button onclick="showCareTips()">Know Pregnancy Care Tips</button>
+        <button onclick="findGender()">Find the Gender of Baby</button>
+    </div>
+    <div class="container" id="care-tips">
+        <h2>Pregnancy Care Tips</h2>
+        <p id="care-tips-message"></p>
+        <button onclick="showFinalResult()">Back to Result</button>
+    </div>
+    <script>
+        function startQuiz() {
+            document.getElementById("main-menu").style.display = "none";
+            document.getElementById("quiz-section").style.display = "block";
+        }
+
+        function goToPrediction() {
+            if (validateQuiz()) {
+                document.getElementById("quiz-section").style.display = "none";
+                document.getElementById("prediction-section").style.display = "block";
+            } else {
+                alert("Please answer all quiz questions.");
+            }
+        }
+
+        function showFortune() {
+            if (validatePrediction()) {
+                document.getElementById("prediction-section").style.display = "none";
+                document.getElementById("fortune-section").style.display = "block";
+                displayRandomFortune();
+            } else {
+                alert("Please complete all fields in the prediction section.");
+            }
+        }
+
+        function showFinalResult() {
+            document.getElementById("fortune-section").style.display = "none";
+            document.getElementById("final-result").style.display = "block";
+        }
+
+        function goBack() {
+            document.getElementById("main-menu").style.display = "block";
+            document.getElementById("quiz-section").style.display = "none";
+            document.getElementById("prediction-section").style.display = "none";
+            document.getElementById("fortune-section").style.display = "none";
+            document.getElementById("final-result").style.display = "none";
+            document.getElementById("care-tips").style.display = "none";
+        }
+
+        function validateQuiz() {
+            let quizAnswered = true;
+            for (let i = 1; i <= 10; i++) {
+                let question = document.querySelector(`input[name="q${i}"]:checked`);
+                if (!question) {
+                    quizAnswered = false;
+                    break;
+                }
+            }
+            return quizAnswered;
+        }
+
+        function validatePrediction() {
+            let hairColor = document.querySelector('select[name="hair-color"]').value;
+            let zodiacSign = document.querySelector('select[name="zodiac-sign"]').value;
+            let selfie = document.querySelector('input[name="selfie"]').value;
+            return hairColor && zodiacSign && selfie;
+        }
+
+        function displayRandomFortune() {
+            const fortunes = [
+                "You will find a sock that has been missing for months.",
+                "Today is a great day to sing in the shower!",
+                "A surprise awaits you in the form of a leftover pizza slice.",
+                "You will accidentally step on a Lego but it won’t hurt as much as usual.",
+                "A seagull will eye you suspiciously but will do nothing."
+            ];
+
+            const randomIndex = Math.floor(Math.random() * fortunes.length);
+            document.getElementById("fortune-message").textContent = fortunes[randomIndex];
+        }
+
+        function showCareTips() {
+            document.getElementById("final-result").style.display = "none";
+            document.getElementById("care-tips").style.display = "block";
+            displayRandomCareTip();
+        }
+
+        function displayRandomCareTip() {
+            const careTips = [
+                "Eat ice cream for breakfast; it’s got calcium!",
+                "Talk to your belly as if it's a separate entity—give it a name.",
+                "Cravings for chocolate? Pretend it’s a vegetable.",
+                "Wear mismatched socks to keep your brain active.",
+                "Watch horror movies to prepare for sleepless nights!"
+            ];
+
+            const randomIndex = Math.floor(Math.random() * careTips.length);
+            document.getElementById("care-tips-message").textContent = careTips[randomIndex];
+        }
+
+        function showFinalResult() {
+            document.getElementById("care-tips").style.display = "none";
+            document.getElementById("final-result").style.display = "block";
+        }
+    </script>
+</body>
+</html>
+
